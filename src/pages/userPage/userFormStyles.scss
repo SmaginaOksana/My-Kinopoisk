@@ -1,0 +1,42 @@
+@import "./template";
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+main {
+  .wrapperForm {
+    text-align: center;
+    padding: 100px;
+    height: 100vh;
+    margin: auto;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    .photo {
+      width: 200px;
+      height: 200px;
+    }
+    h2 {
+      margin-bottom: 20px;
+    }
+    .authForm,
+    .registrForm,
+    .newPassword,
+    .updateProfile {
+      @include flex(column, space-between, center, nowrap);
+      gap: 20px;
+      input {
+        width: 30%;
+      }
+    }
+    button {
+      @include flex(row, space-around, center, nowrap);
+      width: 15%;
+      margin-bottom: 20px;
+    }
+    .userAdd {
+      width: 60px;
+    }
+  }
+}

@@ -1,0 +1,330 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+@import "./template";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.wrapper {
+  @include flex(column, flex-start, center, nowrap);
+  color: rgb(217, 215, 215);
+  @include font(1.3vw, 400);
+  max-width: 1920px;
+  min-height: 100vh;
+  margin: auto;
+  background-color: rgb(23, 23, 23);
+  background-repeat: no-repeat;
+  background-size: cover;
+  .container {
+    padding: 50px;
+    margin: auto;
+  }
+  .container.movie {
+    @include flex(row, space-around, flex-start, nowrap);
+    > div {
+      width: 40%;
+    }
+    h1 {
+      text-align: center;
+      @include font(2.5vw, 700);
+      margin-bottom: 40px;
+    }
+    h2 {
+      text-align: center;
+      font-style: italic;
+      @include font(1.6vw, 500);
+      margin-bottom: 40px;
+    }
+  }
+  .none {
+    display: none !important;
+  }
+  .error {
+    @include font(1.5vw, 400);
+    color: red;
+  }
+  a {
+    cursor: pointer;
+    color: rgb(217, 215, 215);
+    text-decoration: none;
+    padding: 10px 20px;
+    &:hover {
+      transform: scale3d(1.1, 1.1, 1.1);
+    }
+  }
+  button {
+    cursor: pointer;
+    @include font(1.2vw, 400);
+    color: rgb(217, 215, 215);
+    margin: auto;
+    padding: 10px;
+    background-color: transparent;
+    border: 0.5px solid;
+    border-image-source: linear-gradient(
+      273.4deg,
+      #75edfd 4.28%,
+      #ff0066 93.81%
+    );
+    border-image-slice: 1;
+    &:hover {
+      transform: scale3d(1.1, 1.1, 1.1);
+      background: linear-gradient(273.4deg, #75edfd 4.28%, #ff0066 93.81%);
+    }
+    img {
+      width: 25px;
+    }
+  }
+
+  input {
+    @include font(1.2vw, 400);
+    border: 0.5px solid rgb(217, 215, 215);
+    background-color: rgb(215, 215, 215);
+    border-radius: 10px;
+    padding: 20px;
+    &::placeholder {
+      @include font(1.2vw, 400);
+      color: rgb(114, 114, 114);
+    }
+    &:focus {
+      border: 1px solid rgb(217, 215, 215);
+      outline: none;
+      ::placeholder {
+        opacity: 0;
+      }
+    }
+  }
+  h1 {
+    @include font(1.5vw, 400);
+  }
+  h2 {
+    @include font(1.2vw, 500);
+    a {
+      text-decoration: underline;
+      @include font(1.2vw, 700);
+    }
+  }
+  header {
+    width: 100%;
+    height: 20%;
+    .container {
+      position: relative;
+      @include flex(row, space-between, flex-start, nowrap);
+      .logo {
+        img {
+          width: 80px;
+        }
+      }
+      .links {
+        width: 80%;
+        @include flex(row, space-between, center, nowrap);
+        gap: 50px;
+        @media (max-width: 900px) {
+          gap: 20px;
+        }
+        nav {
+          width: 40%;
+          @include flex(row, space-between, center, nowrap);
+          flex-grow: 1;
+        }
+        .search {
+          @include flex(row, space-between, center, nowrap);
+          .inputSearch {
+            width: 80%;
+            position: absolute;
+            top: 50px;
+            left: 10%;
+          }
+          img {
+            padding-left: 20px;
+            cursor: pointer;
+            &:hover {
+              transform: scale3d(1.1, 1.1, 1.1);
+            }
+          }
+        }
+      }
+    }
+  }
+  main {
+    width: 100%;
+    .container {
+      position: relative;
+      @include flex(row, center, flex-start, nowrap);
+      .containerButton {
+        width: 50%;
+        @include flex(column, center, center, nowrap);
+        > div {
+          img {
+            max-width: 550px;
+            border-radius: 5px;
+            @media (max-width: 1250px) {
+              max-width: 450px;
+            }
+            @media (max-width: 1000px) {
+              max-width: 400px;
+            }
+          }
+        }
+        p {
+          @include font(1.5vw, 700);
+          text-align: center;
+          margin-bottom: 10px;
+        }
+        button {
+          border: 1px solid rgb(252, 181, 111);
+          background-color: rgb(173, 63, 0);
+          border-radius: 50%;
+          width: 100px;
+          height: 100px;
+          margin: 0;
+          margin-right: 10px;
+          img {
+            width: 45px;
+          }
+        }
+        h2 {
+          display: inline-block;
+          width: 100px;
+          text-align: left;
+        }
+      }
+      .containerPreviews {
+        width: 50%;
+        @include flex(column, space-between, flex-end, nowrap);
+        h1 {
+          text-align: center;
+          @include font(7vw, 700);
+        }
+        > h2 {
+          width: 70%;
+          margin-bottom: 0;
+        }
+        .details {
+          width: 70%;
+          @include flex(row, flex-start, center, nowrap);
+          gap: 30px;
+        }
+        form {
+          width: 100%;
+          margin: auto;
+          margin-bottom: 20px;
+          &:focus {
+            outline: none;
+          }
+          select {
+            padding: 10px;
+            display: block;
+            margin: auto;
+            background-color: transparent;
+            border: none;
+            color: rgb(217, 215, 215);
+            @include font(1.4vw, 500);
+            &:focus {
+              outline: none;
+            }
+          }
+        }
+
+        .trailers {
+          width: 100%;
+          @include flex(column, space-between, center, nowrap);
+          gap: 30px;
+          .flip {
+            width: 100%;
+            @include flex(row, space-around, center, wrap);
+            button {
+              display: block;
+              margin: auto;
+              width: 150px;
+              padding: 15px 20px;
+              img {
+                width: 30px;
+              }
+              &:hover {
+                background: linear-gradient(
+                  273.4deg,
+                  #75edfd 4.28%,
+                  #ff0066 93.81%
+                );
+              }
+            }
+          }
+          .episodes {
+            width: 100%;
+            height: 100%;
+            @include flex(row, space-around, center, wrap);
+            gap: 15px;
+            .filmHomePage {
+              cursor: pointer;
+              border-radius: 10px;
+              width: 320px;
+              height: 400px;
+              position: relative;
+              @media (max-width: 1450px) {
+                width: 280px;
+                height: 350px;
+              }
+              &:hover {
+                .imgFilm {
+                  width: 0;
+                  height: 0;
+                  transform: translate3d(0, 100%, 0);
+                }
+                .description {
+                  left: 0;
+                  bottom: 0;
+                  right: 0;
+                  width: 100%;
+                  height: 100%;
+                  transform: translate3d(0, -100%, 0);
+                }
+              }
+              .imgFilm {
+                border-radius: 5px;
+                width: 100%;
+                height: 100%;
+                transition: transform 0.5s;
+              }
+              .description {
+                position: absolute;
+                top: 400px;
+                border-radius: 5px;
+                overflow: hidden;
+                background-color: #0094a8;
+                width: 0;
+                height: 0;
+                transition: transform 0.5s;
+                @include flex(column, space-around, center, nowrap);
+                h2 {
+                  text-align: center;
+                  @include font(1.4vw, 700);
+                }
+                p {
+                  text-align: center;
+                }
+                @media (max-width: 1450px) {
+                  top: 350px;
+                }
+              }
+            }
+            .filmPageExceptHome {
+              cursor: pointer;
+              border-radius: 10px;
+              &:hover {
+                transform: scale3d(1.1, 1.1, 1.1);
+              }
+              img {
+                width: 240px;
+                height: 340px;
+              }
+            }
+          }
+        }
+      }
+      .containerPreviews.home {
+        width: 90%;
+      }
+    }
+  }
+}

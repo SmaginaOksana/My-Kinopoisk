@@ -1,0 +1,12 @@
+@mixin font($font-size, $font-weight) {
+  font-family: "Montserrat";
+  font-size: $font-size;
+  font-weight: $font-weight;
+}
+@mixin flex($direction, $just-cont, $align-items, $wrap) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $just-cont;
+  align-items: $align-items;
+  flex-wrap: $wrap;
+}
