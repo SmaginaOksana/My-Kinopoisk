@@ -35,6 +35,7 @@ export default function authPage(auth) {
         window.location.pathname = "/";
       })
       .catch((error) => {
+        console.log(error);
         errorPhrase.classList.remove("none");
         errorPhrase.textContent = `Неверный логин или пароль`;
       });

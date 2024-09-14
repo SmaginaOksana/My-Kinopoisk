@@ -9,21 +9,22 @@ export default function profilePage(auth) {
   const user = auth.currentUser;
   if (user !== null) {
     const displayName = user.displayName;
-    const email = user.email;
     const photoURL = user.photoURL;
-    const emailVerified = user.emailVerified;
-
     const wrapperForm = document.createElement("div");
     wrapperForm.classList.add("wrapperForm");
     const template = `
-  <img class='photo' src="${photoURL}" alt="">
+  <img class='photo' src="${
+    !photoURL ? "../../../images/user.png" : photoURL
+  }" alt="">
   <h1>Profile</h1>
-  <h2>Здраствуйте, ${displayName}!</h2>
+  <h2>Здраствуйте, ${!displayName ? "Пользователь" : displayName}!</h2>
+  <h2>Вы можете внести свои данные в профиль...</h2>
   <form name="updateProfile" class="updateProfile">
     <input type="text" placeholder="firstname" name="firstname" />
     <input type="text" placeholder="photoURL" name="url" />
     <button class="updateProfile">UpdateProfile</button>
   </form>
+  <h2>Вы можете изменить пароль...</h2>
   <form name="newPassword" class="newPassword">
     <input type="text" placeholder="new password" name="newPassword" />
     <input
@@ -47,8 +48,7 @@ export default function profilePage(auth) {
     const deletePage = document.querySelector(".deleteUser");
     const closeProfilePage = document.querySelector(".close");
     const logOutBtn = document.querySelector(".logOutBtn");
-    logOutBtn.style.background =
-      "linear-gradient(273.4deg, #75edfd 4.28%, #ff0066 93.81%)";
+    logOutBtn.style.background = "rgb(1, 148, 80)";
 
     formUpdate.addEventListener("submit", (event) => {
       event.preventDefault();
@@ -62,9 +62,9 @@ export default function profilePage(auth) {
         photoURL: url.value,
       })
         .then(() => {
-          window.location.pathname = "/userProfile";
           photo.classList.remove("none");
           photo.src = url.value;
+          window.location.pathname = "/userProfile";
         })
         .catch((error) => {
           console.log(error);

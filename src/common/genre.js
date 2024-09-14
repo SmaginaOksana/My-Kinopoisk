@@ -11,7 +11,7 @@ export function genre(data) {
     }
   });
   arrOptions = arrGenres.map((item) => {
-    return `<option value=${item}>${item}</option>`;
+    return `<button class="genre" value="${item}">${item}</button>`;
   });
-  return arrOptions;
+  return arrOptions.join("");
 }

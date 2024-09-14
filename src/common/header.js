@@ -14,6 +14,7 @@ export default function header(auth) {
         ><a href="/series" class="series">series</a
         ><a href="/tvShows" class="tvShows">TV-shows</a>
       </nav>
+      <div class="burger"><img src="./images/burgerWhite.png" alt="burgerWhite" /></div>
       <div class="search">
         <input
           type="text"
@@ -44,20 +45,27 @@ export default function header(auth) {
   const tvShowsLink = document.querySelector(".tvShows");
   switch (window.location.pathname) {
     case "/":
-      homeLink.style.cssText = `border: 0.5px solid rgb(217, 215, 215);
-      border-radius: 10px`;
+      homeLink.style.cssText = `border: 0.5px solid rgb(1, 148, 80);
+      border-radius: 30px`;
       break;
     case "/movies":
-      moviesLink.style.cssText = `border: 0.5px solid rgb(217, 215, 215);
-      border-radius: 10px`;
+      moviesLink.style.cssText = `border: 0.5px solid rgb(1, 148, 80);
+      border-radius: 30px`;
       break;
     case "/series":
-      seriesLink.style.cssText = `border: 0.5px solid rgb(217, 215, 215);
-      border-radius: 10px`;
+      seriesLink.style.cssText = `border: 0.5px solid rgb(1, 148, 80);
+      border-radius: 30px`;
       break;
     case "/tvShows":
-      tvShowsLink.style.cssText = `border: 0.5px solid rgb(217, 215, 215);
-      border-radius: 10px`;
+      tvShowsLink.style.cssText = `border: 0.5px solid rgb(1, 148, 80);
+      border-radius: 30px`;
       break;
   }
+  const nav = document.querySelector("nav");
+
+  const burger = document.querySelector(".burger");
+  burger.addEventListener("click", () => {
+    burger.classList.add("none");
+    nav.style.display = "flex";
+  });
 }

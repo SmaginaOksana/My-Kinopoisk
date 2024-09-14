@@ -14,27 +14,40 @@
   min-height: 100vh;
   margin: auto;
   background-color: rgb(23, 23, 23);
-  background-repeat: no-repeat;
   background-size: cover;
   .container {
-    padding: 50px;
+    padding: 40px;
     margin: auto;
+    @media (max-width: 900px) {
+      padding: 30px;
+    }
   }
   .container.movie {
     @include flex(row, space-around, flex-start, nowrap);
-    > div {
-      width: 40%;
+    .movieDescription {
+      width: 50%;
+      @include flex(column, space-between, center, nowrap);
     }
-    h1 {
-      text-align: center;
-      @include font(2.5vw, 700);
-      margin-bottom: 40px;
+    .movieImage {
+      width: 50%;
+      img {
+        width: 100%;
+      }
     }
+    h1,
     h2 {
       text-align: center;
+      margin-bottom: 40px;
+      @media (max-width: 1100px) {
+        margin-bottom: 20px;
+      }
+    }
+    h1 {
+      @include font(2.5vw, 700);
+    }
+    h2 {
       font-style: italic;
       @include font(1.6vw, 500);
-      margin-bottom: 40px;
     }
   }
   .none {
@@ -43,6 +56,7 @@
   .error {
     @include font(1.5vw, 400);
     color: red;
+    margin: auto;
   }
   a {
     cursor: pointer;
@@ -51,25 +65,20 @@
     padding: 10px 20px;
     &:hover {
       transform: scale3d(1.1, 1.1, 1.1);
+      color: rgb(1, 148, 80);
     }
   }
   button {
     cursor: pointer;
     @include font(1.2vw, 400);
-    color: rgb(217, 215, 215);
+    color: white;
     margin: auto;
     padding: 10px;
     background-color: transparent;
-    border: 0.5px solid;
-    border-image-source: linear-gradient(
-      273.4deg,
-      #75edfd 4.28%,
-      #ff0066 93.81%
-    );
-    border-image-slice: 1;
+    border: 0.5px solid rgb(1, 148, 80);
+    border-radius: 30px;
     &:hover {
-      transform: scale3d(1.1, 1.1, 1.1);
-      background: linear-gradient(273.4deg, #75edfd 4.28%, #ff0066 93.81%);
+      background-color: rgb(1, 148, 80);
     }
     img {
       width: 25px;
@@ -81,7 +90,7 @@
     border: 0.5px solid rgb(217, 215, 215);
     background-color: rgb(215, 215, 215);
     border-radius: 10px;
-    padding: 20px;
+    padding: 15px;
     &::placeholder {
       @include font(1.2vw, 400);
       color: rgb(114, 114, 114);
@@ -114,6 +123,9 @@
         img {
           width: 80px;
         }
+        @media (max-width: 650px) {
+          display: none;
+        }
       }
       .links {
         width: 80%;
@@ -122,18 +134,36 @@
         @media (max-width: 900px) {
           gap: 20px;
         }
+        @media (max-width: 650px) {
+          width: 100%;
+          @include flex(row, space-between, center, nowrap);
+        }
         nav {
           width: 40%;
-          @include flex(row, space-between, center, nowrap);
+          @include flex(row, space-between, center, wrap);
           flex-grow: 1;
+          @media (max-width: 650px) {
+            width: 20%;
+            @include flex(row, center, center, wrap);
+            display: none;
+          }
+        }
+        .burger {
+          display: none;
+          @media (max-width: 650px) {
+            display: block;
+          }
+          img {
+            width: 40px;
+          }
         }
         .search {
           @include flex(row, space-between, center, nowrap);
           .inputSearch {
-            width: 80%;
+            width: 50%;
             position: absolute;
-            top: 50px;
-            left: 10%;
+            top: 70%;
+            left: 25%;
           }
           img {
             padding-left: 20px;
@@ -143,6 +173,11 @@
             }
           }
         }
+        .userProfile {
+          a {
+            padding: 0;
+          }
+        }
       }
     }
   }
@@ -150,13 +185,43 @@
     width: 100%;
     .container {
       position: relative;
-      @include flex(row, center, flex-start, nowrap);
-      .containerButton {
+      @include flex(column, center, center, nowrap);
+      gap: 50px;
+      .genreButtons {
+        width: 100%;
+        @include flex(column, center, center, nowrap);
+        h2 {
+          margin-bottom: 20px;
+        }
+        > div {
+          @include flex(row, space-between, center, wrap);
+          gap: 20px;
+          button {
+            width: 300px;
+            @media (max-width: 1100px) {
+              width: 150px;
+            }
+            @media (max-width: 850px) {
+              width: 100px;
+            }
+            @media (max-width: 650px) {
+              width: 80px;
+            }
+          }
+        }
+      }
+      .wrapperPlayer {
+        width: 100%;
+        @include flex(row, space-around, flex-start, nowrap);
+        gap: 15px;
+      }
+      .containerPlayer {
         width: 50%;
         @include flex(column, center, center, nowrap);
-        > div {
+        .divPlayer {
+          width: 100%;
           img {
-            max-width: 550px;
+            width: 100%;
             border-radius: 5px;
             @media (max-width: 1250px) {
               max-width: 450px;
@@ -170,18 +235,6 @@
           @include font(1.5vw, 700);
           text-align: center;
           margin-bottom: 10px;
-        }
-        button {
-          border: 1px solid rgb(252, 181, 111);
-          background-color: rgb(173, 63, 0);
-          border-radius: 50%;
-          width: 100px;
-          height: 100px;
-          margin: 0;
-          margin-right: 10px;
-          img {
-            width: 45px;
-          }
         }
         h2 {
           display: inline-block;
@@ -238,15 +291,15 @@
               margin: auto;
               width: 150px;
               padding: 15px 20px;
+              @media (max-width: 1400px) {
+                width: 100px;
+                padding: 10px 15px;
+              }
               img {
                 width: 30px;
               }
               &:hover {
-                background: linear-gradient(
-                  273.4deg,
-                  #75edfd 4.28%,
-                  #ff0066 93.81%
-                );
+                background-color: rgb(1, 148, 80);
               }
             }
           }
@@ -255,56 +308,89 @@
             height: 100%;
             @include flex(row, space-around, center, wrap);
             gap: 15px;
+            @media (max-width: 1000px) {
+              gap: 40px;
+            }
             .filmHomePage {
               cursor: pointer;
               border-radius: 10px;
-              width: 320px;
-              height: 400px;
+              width: 360px;
+              height: 450px;
               position: relative;
               @media (max-width: 1450px) {
                 width: 280px;
                 height: 350px;
               }
+              @media (max-width: 1100px) {
+                width: 220px;
+                height: 290px;
+              }
+              @media (max-width: 900px) {
+                width: 190px;
+                height: 260px;
+              }
+              @media (max-width: 530px) {
+                width: 140px;
+                height: 200px;
+              }
+              @media (max-width: 420px) {
+                width: 110px;
+                height: 170px;
+              }
+              @media (max-width: 380px) {
+                width: 90px;
+                height: 140px;
+              }
               &:hover {
-                .imgFilm {
-                  width: 0;
-                  height: 0;
-                  transform: translate3d(0, 100%, 0);
-                }
                 .description {
-                  left: 0;
-                  bottom: 0;
-                  right: 0;
+                  top: 450px;
                   width: 100%;
                   height: 100%;
                   transform: translate3d(0, -100%, 0);
+                  @media (max-width: 1450px) {
+                    top: 350px;
+                  }
+                  @media (max-width: 1100px) {
+                    top: 290px;
+                  }
+                }
+              }
+              .aboutMovieLink {
+                display: none;
+                @media (max-width: 1000px) {
+                  display: block;
                 }
               }
               .imgFilm {
                 border-radius: 5px;
                 width: 100%;
                 height: 100%;
-                transition: transform 0.5s;
               }
               .description {
                 position: absolute;
-                top: 400px;
                 border-radius: 5px;
                 overflow: hidden;
-                background-color: #0094a8;
+                background-color: rgb(1, 148, 80);
                 width: 0;
                 height: 0;
                 transition: transform 0.5s;
                 @include flex(column, space-around, center, nowrap);
+                @media (max-width: 1000px) {
+                  display: none;
+                }
                 h2 {
                   text-align: center;
                   @include font(1.4vw, 700);
                 }
                 p {
+                  padding: 15px;
                   text-align: center;
+                  word-break: break-all;
                 }
-                @media (max-width: 1450px) {
-                  top: 350px;
+                a {
+                  &:hover {
+                    color: white;
+                  }
                 }
               }
             }
@@ -317,6 +403,22 @@
               img {
                 width: 240px;
                 height: 340px;
+                @media (max-width: 1250px) {
+                  width: 190px;
+                  height: 280px;
+                }
+                @media (max-width: 930px) {
+                  width: 150px;
+                  height: 240px;
+                }
+                @media (max-width: 760px) {
+                  width: 120px;
+                  height: 180px;
+                }
+                @media (max-width: 640px) {
+                  width: 80px;
+                  height: 130px;
+                }
               }
             }
           }

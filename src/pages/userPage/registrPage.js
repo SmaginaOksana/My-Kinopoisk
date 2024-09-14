@@ -48,13 +48,13 @@ export default function registrPage(auth) {
     }
 
     createUserWithEmailAndPassword(auth, email.value, password.value)
-      .then((userCredential) => {
-        console.log(userCredential);
+      .then(() => {
         window.location.pathname = "/";
       })
       .catch((error) => {
+        console.log(error);
         errorPhrase.classList.remove("none");
-        errorPhrase.innerHTML = `Пользователь с таким email уже существует`;
+        errorPhrase.innerHTML = `Пользователь с такими данными уже существует`;
       });
   });
 }

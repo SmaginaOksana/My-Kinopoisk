@@ -11,32 +11,28 @@ export default function renderMoviesPage(data, auth) {
   app.insertAdjacentHTML(
     "beforeend",
     `<div class="container">
-    <div class="containerButton">
-    <p class='name'></p>
-    <p class='country'></p>
-    <div>
-    <img class='player' src="" alt="" />
-    </div>
-    </div>
-    <div class="containerPreviews">
-
-    <form name="genre">
-    <select name="select" id="">
-      <option value="Выберите жанр" hidden>Выберите жанр</option>
-      ${genre(data)}
-    </select>
-  </form>
-  
-    <div class="trailers">
-       <div class="episodes">
-        
-        </div>
+  <div class="genreButtons">
+    <h2>Для отображения фильмов выберите жанр</h2>
+    <div>${genre(data)}</div>
+  </div>
+  <div class="wrapperPlayer">
+    <div class="containerPlayer">
+      <p class="name"></p>
+      <p class="country"></p>
+      <div class="divPlayer">
+        <img class="player" src="" alt="" />
       </div>
     </div>
-  </div>`
+    <div class="containerPreviews">
+      <div class="trailers">
+        <div class="episodes"></div>
+      </div>
+    </div>
+  </div>
+</div>`
   );
 
-  const select = document.querySelector("select");
+  const genreButtons = document.querySelector(".genreButtons");
   const episodes = document.querySelector(".episodes");
   const player = document.querySelector(".player");
   const name = document.querySelector(".name");
@@ -55,7 +51,12 @@ export default function renderMoviesPage(data, auth) {
   };
   containerPreviews.addEventListener("click", selectVideo);
 
-  select.addEventListener("change", () => {
-    episodes.innerHTML = cardMovie(data.items, select.value);
+  genreButtons.addEventListener("click", (event) => {
+    if (event.target.classList.contains("genre")) {
+      episodes.innerHTML = cardMovie(
+        data.items,
+        event.target.getAttribute("value")
+      );
+    }
   });
 }

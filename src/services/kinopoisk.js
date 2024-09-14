@@ -5,7 +5,7 @@ export default class Kinopoisk {
   static async getMovieHomePage() {
     try {
       const response = await fetch(
-        `${baseUrl}/api/v2.2/films/collections?type=TOP_POPULAR_MOVIES&page=1`,
+        `${baseUrl}/api/v2.2/films/premieres?year=2024&month=JANUARY`,
         {
           method: "GET",
           headers: {
